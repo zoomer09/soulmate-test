@@ -66,11 +66,11 @@
     <!-- Step 5: Fourth Question -->
     <div id="step5" class="hidden">
         <h2>Would you let him drive his Hot Wheels over you? 🚗😂</h2>
-        <button onclick="nextStep(6)">Yes</button>
+        <button onclick="nextStep('finalMessage')">Yes</button>
         <button onclick="retry(5)">No</button>
     </div>
 
-    <!-- Final Message -->
+    <!-- FINAL MESSAGE (WITH IMAGES) -->
     <div id="finalMessage" class="hidden">
         <h2>🥰 Baby, if you made it here... 🥰</h2>
         <p>IT MEANS YOU'RE MY SOULMATEEEEE 💞 I LOVE YOU SO MUCH 😭💖</p>
@@ -94,14 +94,18 @@
         }
 
         function nextStep(stepNumber) {
-            let previousStep = stepNumber - 1;
-            document.getElementById("step" + previousStep).classList.add("hidden"); // Hide previous
-            document.getElementById("step" + stepNumber).classList.remove("hidden"); // Show next
+            let previousStep = stepNumber === "finalMessage" ? 5 : stepNumber - 1;
+            document.getElementById("step" + previousStep).classList.add("hidden"); // Hide previous question
+            
+            if (stepNumber === "finalMessage") {
+                document.getElementById("finalMessage").classList.remove("hidden"); // Show final message
+            } else {
+                document.getElementById("step" + stepNumber).classList.remove("hidden"); // Show next question
+            }
         }
 
         function retry(stepNumber) {
             alert("Try again! 🥺💖");
-            document.getElementById("step" + stepNumber).classList.remove("hidden"); // Stay on same question
         }
     </script>
 
