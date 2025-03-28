@@ -50,6 +50,13 @@
         h1, h2 {
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
         }
+        img {
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+            margin-top: 15px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -63,14 +70,26 @@
         
         <div id="step2" class="hidden">
             <h2>Are you Amarha’s cute babybear 🧸 that he loves so much? 🥰</h2>
-            <button onclick="checkAnswer(true)">Yes 😍</button>
+            <button onclick="checkAnswer(true, 'step3')">Yes 😍</button>
             <button onclick="retry()">No ❌</button>
         </div>
 
         <div id="step3" class="hidden">
             <h2>Do you love him? 💖</h2>
-            <button onclick="finalStep()">Yes 😘</button>
+            <button onclick="checkAnswer(true, 'step4')">Yes 😘</button>
             <button onclick="retry()">No 💔</button>
+        </div>
+
+        <div id="step4" class="hidden">
+            <h2>Would you stay with him forever? 💍</h2>
+            <button onclick="checkAnswer(true, 'step5')">Yes 🥹💕</button>
+            <button onclick="retry()">No 😭</button>
+        </div>
+
+        <div id="step5" class="hidden">
+            <h2>Would you let him drive his Hot Wheels over you? 🚗💨</h2>
+            <button onclick="checkAnswer(true, 'finalMessage')">Yes 😂❤️</button>
+            <button onclick="retry()">No 😤</button>
         </div>
 
         <div id="finalMessage" class="hidden">
@@ -80,6 +99,8 @@
             <p>YOU ARE THE BEST PERSON IN MY LIFE EVER 😭💕💖</p>
             <p>I wanna make you feel so precious and amazing, my try-hard babyyyy 😘💖💖</p>
             <h1>💘💖💞💖💘</h1>
+            <img src="love1.jpg" alt="My Person > Everyone Else">
+            <img src="love2.jpg" alt="I Wanna Be With You Forever">
         </div>
     </div>
 
@@ -89,18 +110,14 @@
             document.getElementById('step2').classList.remove('hidden');
         }
 
-        function checkAnswer(correct) {
+        function checkAnswer(correct, nextStepId) {
             if (correct) {
-                document.getElementById('step2').classList.add('hidden');
-                document.getElementById('step3').classList.remove('hidden');
+                let currentStep = document.querySelector('.container .hidden:not([id])');
+                if (currentStep) currentStep.classList.add('hidden');
+                document.getElementById(nextStepId).classList.remove('hidden');
             } else {
                 retry();
             }
-        }
-
-        function finalStep() {
-            document.getElementById('step3').classList.add('hidden');
-            document.getElementById('finalMessage').classList.remove('hidden');
         }
 
         function retry() {
