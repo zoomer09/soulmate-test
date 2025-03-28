@@ -11,7 +11,7 @@
             background-color: #ffccff;
             color: #660066;
         }
-        .hidden { display: none; }
+        .hidden { display: none; } /* Hides elements */
         button {
             background-color: #ff66b2;
             color: white;
@@ -46,28 +46,28 @@
     <div id="step2" class="hidden">
         <h2>Are you Amarha’s cute babybear whom he loves so much and would die for? 😍</h2>
         <button onclick="nextStep(3)">Yes</button>
-        <button onclick="retry()">No</button>
+        <button onclick="retry(2)">No</button>
     </div>
 
     <!-- Step 3: Second Question -->
     <div id="step3" class="hidden">
         <h2>Do you love him? 🥺💖</h2>
         <button onclick="nextStep(4)">Yes</button>
-        <button onclick="retry()">No</button>
+        <button onclick="retry(3)">No</button>
     </div>
 
     <!-- Step 4: Third Question -->
     <div id="step4" class="hidden">
         <h2>Would you stay with him forever? 💍💖</h2>
         <button onclick="nextStep(5)">Yes</button>
-        <button onclick="retry()">No</button>
+        <button onclick="retry(4)">No</button>
     </div>
 
     <!-- Step 5: Fourth Question -->
     <div id="step5" class="hidden">
         <h2>Would you let him drive his Hot Wheels over you? 🚗😂</h2>
         <button onclick="nextStep(6)">Yes</button>
-        <button onclick="retry()">No</button>
+        <button onclick="retry(5)">No</button>
     </div>
 
     <!-- Final Message -->
@@ -94,13 +94,14 @@
         }
 
         function nextStep(stepNumber) {
-            let currentStep = stepNumber - 1;
-            document.getElementById("step" + currentStep).classList.add("hidden");
-            document.getElementById("step" + stepNumber).classList.remove("hidden");
+            let previousStep = stepNumber - 1;
+            document.getElementById("step" + previousStep).classList.add("hidden"); // Hide previous
+            document.getElementById("step" + stepNumber).classList.remove("hidden"); // Show next
         }
 
-        function retry() {
+        function retry(stepNumber) {
             alert("Try again! 🥺💖");
+            document.getElementById("step" + stepNumber).classList.remove("hidden"); // Stay on same question
         }
     </script>
 
