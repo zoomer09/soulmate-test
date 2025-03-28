@@ -28,6 +28,9 @@
         img {
             max-width: 300px;
             margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
@@ -46,37 +49,39 @@
     <div id="step2" class="hidden">
         <h2>Are you Amarha’s cute babybear whom he loves so much and would die for? 😍</h2>
         <button onclick="nextStep(3)">Yes</button>
-        <button onclick="retry(2)">No</button>
+        <button onclick="retry()">No</button>
     </div>
 
     <!-- Step 3: Second Question -->
     <div id="step3" class="hidden">
         <h2>Do you love him? 🥺💖</h2>
         <button onclick="nextStep(4)">Yes</button>
-        <button onclick="retry(3)">No</button>
+        <button onclick="retry()">No</button>
     </div>
 
     <!-- Step 4: Third Question -->
     <div id="step4" class="hidden">
         <h2>Would you stay with him forever? 💍💖</h2>
         <button onclick="nextStep(5)">Yes</button>
-        <button onclick="retry(4)">No</button>
+        <button onclick="retry()">No</button>
     </div>
 
     <!-- Step 5: Fourth Question -->
     <div id="step5" class="hidden">
         <h2>Would you let him drive his Hot Wheels over you? 🚗😂</h2>
-        <button onclick="nextStep('finalMessage')">Yes</button>
-        <button onclick="retry(5)">No</button>
+        <button onclick="showFinalMessage()">Yes</button>
+        <button onclick="retry()">No</button>
     </div>
 
-    <!-- FINAL MESSAGE (WITH IMAGES) -->
+    <!-- FINAL MESSAGE -->
     <div id="finalMessage" class="hidden">
         <h2>🥰 Baby, if you made it here... 🥰</h2>
-        <p>IT MEANS YOU'RE MY SOULMATEEEEE 💞 I LOVE YOU SO MUCH 😭💖</p>
-        <p>I WANNA MAKE YOU SO HAPPY THAT YOU FORGET WHAT SADNESS EVEN IS. 💫✨</p>
-        <p>YOU ARE THE BEST PERSON IN MY LIFE EVER 😭💕💖</p>
-        <p>I wanna make you feel so precious and amazing, my try-hard babyyyy 😘💖💖</p>
+        <p style="font-size: 22px; color: #ff3385;">
+            IT MEANS YOU'RE MY SOUL MATEEEEE 😭💖 I LOVE YOU SO MUCH 💞💞💞
+        </p>
+        <p style="font-size: 20px;">I WANNA MAKE YOU SO HAPPY THAT YOU FORGET WHAT SADNESS EVEN IS. 💫✨</p>
+        <p style="font-size: 20px;">YOU ARE THE BEST PERSON IN MY LIFE EVER 😭💕💖</p>
+        <p style="font-size: 20px;">I wanna make you feel so precious and amazing, my try-hard babyyyy 😘💖💖</p>
         <h1>💘💖💞💖💘</h1>
         <img src="love1.jpg" alt="My Person > Everyone Else">
         <img src="love2.jpg" alt="I Wanna Be With You Forever">
@@ -94,17 +99,17 @@
         }
 
         function nextStep(stepNumber) {
-            let previousStep = stepNumber === "finalMessage" ? 5 : stepNumber - 1;
+            let previousStep = stepNumber - 1;
             document.getElementById("step" + previousStep).classList.add("hidden"); // Hide previous question
-            
-            if (stepNumber === "finalMessage") {
-                document.getElementById("finalMessage").classList.remove("hidden"); // Show final message
-            } else {
-                document.getElementById("step" + stepNumber).classList.remove("hidden"); // Show next question
-            }
+            document.getElementById("step" + stepNumber).classList.remove("hidden"); // Show next question
         }
 
-        function retry(stepNumber) {
+        function showFinalMessage() {
+            document.getElementById("step5").classList.add("hidden");
+            document.getElementById("finalMessage").classList.remove("hidden"); // Show final message
+        }
+
+        function retry() {
             alert("Try again! 🥺💖");
         }
     </script>
